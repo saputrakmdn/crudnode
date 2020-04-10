@@ -1,0 +1,47 @@
+<%- include('partials/header.ejs') -%>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (product) { %>
+        <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="first-name">Name</label>
+                    <input type="text" class="form-control" name="name" id="first-name" value="<%= product.name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="last-name">Price</label>
+                    <input type="text" class="form-control" name="price" id="last-name" value="<%= product.price %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="username">Category</label>
+                    <div class="form-row">
+                            <select id="category" name="category" class="form-control" required>
+                                <% category.forEach((categorys, index)=>{ %>
+                                    <option value="<%= categorys.id %>" <% if(product.id_category == categorys.id ){%>selected <%}%>><%= categorys.name %></option>
+                                <% }) %>
+                            </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="username">Cashier</label>
+                    <div class="form-row">
+                            <select id="category" name="cashier" class="form-control" required>
+                                <% cashier.forEach((data, index)=>{ %>
+                                    <option value="<%= data.id %>" <% if(product.id_category == data.id ){%>selected <%}%>><%= data.name %></option>
+                                <% }) %>
+                            </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Player</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Player Not Found. Go <a href="/add">here</a> to add players.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
