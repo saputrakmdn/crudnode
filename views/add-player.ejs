@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') -%>
+    <div class="container">
+        <% if (message != '') { %>
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="name" id="username" placeholder="Name" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Price" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="">category</option>
+                        <% category.forEach((categorys, index)=>{ %>
+                            <option value="<%= categorys.id %>"><%= categorys.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <select id="cashier" name="cashier" class="form-control" required>
+                        <option value="">Cashier</option>
+                        <% cashier.forEach((value, index)=>{ %>
+                            <option value="<%= value.id %>"><%= value.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Add Player</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
